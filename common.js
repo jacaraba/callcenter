@@ -362,6 +362,9 @@ function lideresgestion_validateData() {
 	$j('.has-error').removeClass('has-error');
 	var errors = false;
 
+	// check all required fields have values
+	if(!AppGini.Validation.fieldRequired('lookup', 'CODGESTION', 'CODGESTION')) return false;
+
 	return !errors;
 }
 function lideres_validateData() {

@@ -35,6 +35,17 @@
 		'gestion' => [
 		],
 		'lideresgestion' => [
+			'CODGESTION' => [
+				'parent_table' => 'gestion',
+				'parent_pk_field' => 'CODGESTION',
+				'parent_caption' => '`gestion`.`CODGESTION`',
+				'parent_from' => '`gestion` ',
+				'filterers' => [],
+				'custom_query' => '',
+				'inherit_permissions' => false,
+				'list_type' => 0,
+				'not_null' => true,
+			],
 			'CEDULA' => [
 				'parent_table' => 'lideres',
 				'parent_pk_field' => 'CEDULA',

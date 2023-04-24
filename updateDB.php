@@ -23,14 +23,16 @@
 			CREATE TABLE IF NOT EXISTS `lideresgestion` ( 
 				`LLAVE` INT NOT NULL AUTO_INCREMENT,
 				PRIMARY KEY (`LLAVE`),
-				`CODGESTION` VARCHAR(4) NULL,
+				`CODGESTION` VARCHAR(4) NOT NULL,
 				`CEDULA` VARCHAR(10) NULL,
 				`CELULAR` VARCHAR(10) NULL,
 				`OBSERVACIONES` VARCHAR(100) NULL,
 				`ESTADO` VARCHAR(10) NULL DEFAULT 'INGRESADO'
-			) CHARSET utf8mb4"
+			) CHARSET utf8mb4", [
+				" ALTER TABLE `lideresgestion` CHANGE `CODGESTION` `CODGESTION` VARCHAR(4) NOT NULL ",
+			]
 		);
-		setupIndexes('lideresgestion', ['CEDULA','CELULAR',]);
+		setupIndexes('lideresgestion', ['CODGESTION','CEDULA','CELULAR',]);
 
 		setupTable(
 			'lideres', " 
