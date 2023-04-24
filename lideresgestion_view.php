@@ -21,7 +21,7 @@
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
-		"`lideresgestion`.`CELULAR`" => "CELULAR",
+		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`DIRECCION`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`DIRECCION`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
 	];
@@ -30,7 +30,7 @@
 		1 => '`lideresgestion`.`LLAVE`',
 		2 => 2,
 		3 => 3,
-		4 => '`lideresgestion`.`CELULAR`',
+		4 => 4,
 		5 => 5,
 		6 => 6,
 	];
@@ -40,7 +40,7 @@
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
-		"`lideresgestion`.`CELULAR`" => "CELULAR",
+		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`DIRECCION`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`DIRECCION`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
 	];
@@ -49,7 +49,7 @@
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
-		"`lideresgestion`.`CELULAR`" => "CELULAR",
+		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`DIRECCION`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`DIRECCION`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
 	];
@@ -59,15 +59,15 @@
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
-		"`lideresgestion`.`CELULAR`" => "CELULAR",
+		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`DIRECCION`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`DIRECCION`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
 	];
 
 	// Lookup fields that can be used as filterers
-	$x->filterers = ['CEDULA' => 'CEDULA', ];
+	$x->filterers = ['CEDULA' => 'CEDULA', 'CELULAR' => 'CELULAR', ];
 
-	$x->QueryFrom = "`lideresgestion` LEFT JOIN `lideres` as lideres1 ON `lideres1`.`CEDULA`=`lideresgestion`.`CEDULA` ";
+	$x->QueryFrom = "`lideresgestion` LEFT JOIN `lideres` as lideres1 ON `lideres1`.`CEDULA`=`lideresgestion`.`CEDULA` LEFT JOIN `lideres` as lideres2 ON `lideres2`.`CEDULA`=`lideresgestion`.`CELULAR` ";
 	$x->QueryWhere = '';
 	$x->QueryOrder = '';
 
@@ -94,10 +94,10 @@
 	$x->TableIcon = 'table.gif';
 	$x->PrimaryKey = '`lideresgestion`.`LLAVE`';
 
-	$x->ColWidth = [150, 150, 150, 150, 150, 150, ];
-	$x->ColCaption = ['LLAVE', 'CODGESTION', 'CEDULA', 'CELULAR', 'OBSERVACIONES', 'ESTADO', ];
-	$x->ColFieldName = ['LLAVE', 'CODGESTION', 'CEDULA', 'CELULAR', 'OBSERVACIONES', 'ESTADO', ];
-	$x->ColNumber  = [1, 2, 3, 4, 5, 6, ];
+	$x->ColWidth = [150, 150, 150, 150, 150, ];
+	$x->ColCaption = ['LLAVE', 'CODGESTION', 'CEDULA', 'CELULAR', 'ESTADO', ];
+	$x->ColFieldName = ['LLAVE', 'CODGESTION', 'CEDULA', 'CELULAR', 'ESTADO', ];
+	$x->ColNumber  = [1, 2, 3, 4, 6, ];
 
 	// template paths below are based on the app main directory
 	$x->Template = 'templates/lideresgestion_templateTV.html';

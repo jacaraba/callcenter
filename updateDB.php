@@ -25,12 +25,12 @@
 				PRIMARY KEY (`LLAVE`),
 				`CODGESTION` VARCHAR(20) NULL,
 				`CEDULA` VARCHAR(10) NULL,
-				`CELULAR` INT(10) NULL,
+				`CELULAR` VARCHAR(10) NULL,
 				`OBSERVACIONES` VARCHAR(100) NULL,
 				`ESTADO` VARCHAR(10) NULL DEFAULT 'INGRESADO'
 			) CHARSET utf8mb4"
 		);
-		setupIndexes('lideresgestion', ['CEDULA',]);
+		setupIndexes('lideresgestion', ['CEDULA','CELULAR',]);
 
 		setupTable(
 			'lideres', " 
