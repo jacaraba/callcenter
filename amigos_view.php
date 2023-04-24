@@ -42,7 +42,7 @@
 		6 => 6,
 		7 => 7,
 		8 => '`amigos`.`MESA`',
-		9 => '`amigos`.`CELULAR`',
+		9 => 9,
 		10 => 10,
 		11 => 11,
 		12 => 12,
@@ -125,7 +125,6 @@
 	$x->QuickSearch = 1;
 	$x->QuickSearchText = $Translation['quick search'];
 	$x->ScriptFileName = 'amigos_view.php';
-	$x->RedirectAfterInsert = 'https://wsp.registraduria.gov.co/censo/consultar';
 	$x->TableTitle = 'Amigos';
 	$x->TableIcon = 'table.gif';
 	$x->PrimaryKey = '`amigos`.`LLAVE`';

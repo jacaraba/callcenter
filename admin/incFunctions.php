@@ -1062,7 +1062,7 @@
 						],
 					],
 					'CELULAR' => [
-						'appgini' => "INT(10) NULL",
+						'appgini' => "VARCHAR(10) NULL",
 						'info' => [
 							'caption' => 'CELULAR',
 							'description' => '',
@@ -1155,7 +1155,7 @@
 						],
 					],
 					'CELULAR' => [
-						'appgini' => "INT(10) NULL",
+						'appgini' => "VARCHAR(10) NULL",
 						'info' => [
 							'caption' => 'CELULAR',
 							'description' => '',
