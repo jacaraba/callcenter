@@ -2543,7 +2543,7 @@
 			'lideresgestion' => [
 				'CODGESTION' => 'SELECT `gestion`.`CODGESTION`, IF(CHAR_LENGTH(`gestion`.`CODGESTION`) || CHAR_LENGTH(`gestion`.`DESGESTION`), CONCAT_WS(\'\', `gestion`.`CODGESTION`, \' - \', `gestion`.`DESGESTION`), \'\') FROM `gestion` ORDER BY 2',
 				'CEDULA' => 'SELECT `lideres`.`CEDULA`, IF(CHAR_LENGTH(`lideres`.`CEDULA`) || CHAR_LENGTH(`lideres`.`NOMBRE`), CONCAT_WS(\'\', `lideres`.`CEDULA`, \' - \', `lideres`.`NOMBRE`), \'\') FROM `lideres` LEFT JOIN `divpol2022` as divpol20221 ON `divpol20221`.`PUESTO`=`lideres`.`PUESTO` ORDER BY 2',
-				'CELULAR' => 'SELECT `lideres`.`CEDULA`, IF(CHAR_LENGTH(`lideres`.`CELULAR`) || CHAR_LENGTH(`lideres`.`DIRECCION`), CONCAT_WS(\'\', `lideres`.`CELULAR`, \' - \', `lideres`.`DIRECCION`), \'\') FROM `lideres` LEFT JOIN `divpol2022` as divpol20221 ON `divpol20221`.`PUESTO`=`lideres`.`PUESTO` ORDER BY 2',
+				'CELULAR' => 'SELECT `lideres`.`CEDULA`, IF(CHAR_LENGTH(`lideres`.`CEDULA`) || CHAR_LENGTH(`lideres`.`CELULAR`), CONCAT_WS(\'\', `lideres`.`CEDULA`, \' - CELULAR: \', `lideres`.`CELULAR`), \'\') FROM `lideres` LEFT JOIN `divpol2022` as divpol20221 ON `divpol20221`.`PUESTO`=`lideres`.`PUESTO` ORDER BY 2',
 			],
 			'lideres' => [
 				'PUESTO' => 'SELECT `divpol2022`.`PUESTO`, IF(CHAR_LENGTH(`divpol2022`.`PUESTO`) || CHAR_LENGTH(`divpol2022`.`nompue`), CONCAT_WS(\'\', `divpol2022`.`PUESTO`, \'-\', `divpol2022`.`nompue`), \'\') FROM `divpol2022` ORDER BY 2',

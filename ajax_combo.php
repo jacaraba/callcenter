@@ -60,7 +60,7 @@
 			'CELULAR' => [
 				'parent_table' => 'lideres',
 				'parent_pk_field' => 'CEDULA',
-				'parent_caption' => 'IF(CHAR_LENGTH(`lideres`.`CELULAR`) || CHAR_LENGTH(`lideres`.`DIRECCION`), CONCAT_WS(\'\', `lideres`.`CELULAR`, \' - \', `lideres`.`DIRECCION`), \'\')',
+				'parent_caption' => 'IF(CHAR_LENGTH(`lideres`.`CEDULA`) || CHAR_LENGTH(`lideres`.`CELULAR`), CONCAT_WS(\'\', `lideres`.`CEDULA`, \' - CELULAR: \', `lideres`.`CELULAR`), \'\')',
 				'parent_from' => '`lideres` LEFT JOIN `divpol2022` as divpol20221 ON `divpol20221`.`PUESTO`=`lideres`.`PUESTO` ',
 				'filterers' => [],
 				'custom_query' => '',
