@@ -23,12 +23,18 @@
 			CREATE TABLE IF NOT EXISTS `lideresgestion` ( 
 				`LLAVE` INT NOT NULL AUTO_INCREMENT,
 				PRIMARY KEY (`LLAVE`),
+				`HORA` DATETIME NULL,
 				`CODGESTION` VARCHAR(4) NOT NULL,
 				`CEDULA` VARCHAR(10) NULL,
 				`CELULAR` VARCHAR(10) NULL,
 				`OBSERVACIONES` VARCHAR(100) NULL,
 				`ESTADO` VARCHAR(10) NULL DEFAULT 'INGRESADO'
-			) CHARSET utf8mb4"
+			) CHARSET utf8mb4", [
+				"ALTER TABLE lideresgestion ADD `field7` VARCHAR(40)",
+				"ALTER TABLE `lideresgestion` CHANGE `field7` `HORA` VARCHAR(40) NULL ",
+				" ALTER TABLE `lideresgestion` CHANGE `HORA` `HORA` DATETIME NULL ",
+				" ALTER TABLE `lideresgestion` CHANGE `HORA` `HORA` DATETIME NULL ",
+			]
 		);
 		setupIndexes('lideresgestion', ['CODGESTION','CEDULA','CELULAR',]);
 

@@ -13,6 +13,7 @@ function lideresgestion_insert(&$error_message = '') {
 	if(!$arrPerm['insert']) return false;
 
 	$data = [
+		'HORA' => parseCode('<%%creationDateTime%%>', true, true),
 		'CODGESTION' => Request::lookup('CODGESTION', ''),
 		'CEDULA' => Request::lookup('CEDULA', ''),
 		'CELULAR' => Request::lookup('CELULAR', ''),
@@ -264,7 +265,7 @@ function lideresgestion_form($selected_id = '', $AllowUpdate = 1, $AllowInsert =
 		$combo_CODGESTION->SelectedData = $filterer_CODGESTION;
 		$combo_CEDULA->SelectedData = $filterer_CEDULA;
 		$combo_CELULAR->SelectedData = $filterer_CELULAR;
-		$combo_ESTADO->SelectedText = (isset($filterField[1]) && $filterField[1] == '6' && $filterOperator[1] == '<=>' ? $filterValue[1] : 'INGRESADO');
+		$combo_ESTADO->SelectedText = (isset($filterField[1]) && $filterField[1] == '7' && $filterOperator[1] == '<=>' ? $filterValue[1] : 'INGRESADO');
 	}
 	$combo_CODGESTION->HTML = '<span id="CODGESTION-container' . $rnd1 . '"></span><input type="hidden" name="CODGESTION" id="CODGESTION' . $rnd1 . '" value="' . html_attr($combo_CODGESTION->SelectedData) . '">';
 	$combo_CODGESTION->MatchText = '<span id="CODGESTION-container-readonly' . $rnd1 . '"></span><input type="hidden" name="CODGESTION" id="CODGESTION' . $rnd1 . '" value="' . html_attr($combo_CODGESTION->SelectedData) . '">';
@@ -651,6 +652,7 @@ function lideresgestion_form($selected_id = '', $AllowUpdate = 1, $AllowInsert =
 
 	// process images
 	$templateCode = str_replace('<%%UPLOADFILE(LLAVE)%%>', '', $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(HORA)%%>', '', $templateCode);
 	$templateCode = str_replace('<%%UPLOADFILE(CODGESTION)%%>', '', $templateCode);
 	$templateCode = str_replace('<%%UPLOADFILE(CEDULA)%%>', '', $templateCode);
 	$templateCode = str_replace('<%%UPLOADFILE(CELULAR)%%>', '', $templateCode);
@@ -662,6 +664,8 @@ function lideresgestion_form($selected_id = '', $AllowUpdate = 1, $AllowInsert =
 		if( $dvprint) $templateCode = str_replace('<%%VALUE(LLAVE)%%>', safe_html($urow['LLAVE']), $templateCode);
 		if(!$dvprint) $templateCode = str_replace('<%%VALUE(LLAVE)%%>', html_attr($row['LLAVE']), $templateCode);
 		$templateCode = str_replace('<%%URLVALUE(LLAVE)%%>', urlencode($urow['LLAVE']), $templateCode);
+		$templateCode = str_replace('<%%VALUE(HORA)%%>', app_datetime($row['HORA'], 'dt'), $templateCode);
+		$templateCode = str_replace('<%%URLVALUE(HORA)%%>', urlencode(app_datetime($urow['HORA'], 'dt')), $templateCode);
 		if( $dvprint) $templateCode = str_replace('<%%VALUE(CODGESTION)%%>', safe_html($urow['CODGESTION']), $templateCode);
 		if(!$dvprint) $templateCode = str_replace('<%%VALUE(CODGESTION)%%>', html_attr($row['CODGESTION']), $templateCode);
 		$templateCode = str_replace('<%%URLVALUE(CODGESTION)%%>', urlencode($urow['CODGESTION']), $templateCode);
@@ -683,6 +687,8 @@ function lideresgestion_form($selected_id = '', $AllowUpdate = 1, $AllowInsert =
 	} else {
 		$templateCode = str_replace('<%%VALUE(LLAVE)%%>', '', $templateCode);
 		$templateCode = str_replace('<%%URLVALUE(LLAVE)%%>', urlencode(''), $templateCode);
+		$templateCode = str_replace('<%%VALUE(HORA)%%>', '<%%creationDateTime%%>', $templateCode);
+		$templateCode = str_replace('<%%URLVALUE(HORA)%%>', urlencode('<%%creationDateTime%%>'), $templateCode);
 		$templateCode = str_replace('<%%VALUE(CODGESTION)%%>', '', $templateCode);
 		$templateCode = str_replace('<%%URLVALUE(CODGESTION)%%>', urlencode(''), $templateCode);
 		$templateCode = str_replace('<%%VALUE(CEDULA)%%>', '', $templateCode);

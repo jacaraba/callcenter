@@ -996,6 +996,13 @@
 							'description' => '',
 						],
 					],
+					'HORA' => [
+						'appgini' => "DATETIME NULL",
+						'info' => [
+							'caption' => 'HORA',
+							'description' => '',
+						],
+					],
 					'CODGESTION' => [
 						'appgini' => "VARCHAR(4) NOT NULL",
 						'info' => [

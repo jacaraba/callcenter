@@ -19,6 +19,7 @@
 	// Fields that can be displayed in the table view
 	$x->QueryFieldsTV = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
+		"if(`lideresgestion`.`HORA`,date_format(`lideresgestion`.`HORA`,'%m/%d/%Y %h:%i %p'),'')" => "HORA",
 		"IF(    CHAR_LENGTH(`gestion1`.`CODGESTION`) || CHAR_LENGTH(`gestion1`.`DESGESTION`), CONCAT_WS('',   `gestion1`.`CODGESTION`, ' - ', `gestion1`.`DESGESTION`), '') /* CODGESTION */" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* LIDER */" => "CEDULA",
 		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`NOMBRE`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`NOMBRE`), '') /* CELULAR */" => "CELULAR",
@@ -28,16 +29,18 @@
 	// mapping incoming sort by requests to actual query fields
 	$x->SortFields = [
 		1 => '`lideresgestion`.`LLAVE`',
-		2 => 2,
+		2 => '`lideresgestion`.`HORA`',
 		3 => 3,
 		4 => 4,
 		5 => 5,
 		6 => 6,
+		7 => 7,
 	];
 
 	// Fields that can be displayed in the csv file
 	$x->QueryFieldsCSV = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
+		"if(`lideresgestion`.`HORA`,date_format(`lideresgestion`.`HORA`,'%m/%d/%Y %h:%i %p'),'')" => "HORA",
 		"IF(    CHAR_LENGTH(`gestion1`.`CODGESTION`) || CHAR_LENGTH(`gestion1`.`DESGESTION`), CONCAT_WS('',   `gestion1`.`CODGESTION`, ' - ', `gestion1`.`DESGESTION`), '') /* CODGESTION */" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* LIDER */" => "CEDULA",
 		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`NOMBRE`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`NOMBRE`), '') /* CELULAR */" => "CELULAR",
@@ -47,6 +50,7 @@
 	// Fields that can be filtered
 	$x->QueryFieldsFilters = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
+		"`lideresgestion`.`HORA`" => "HORA",
 		"IF(    CHAR_LENGTH(`gestion1`.`CODGESTION`) || CHAR_LENGTH(`gestion1`.`DESGESTION`), CONCAT_WS('',   `gestion1`.`CODGESTION`, ' - ', `gestion1`.`DESGESTION`), '') /* CODGESTION */" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* LIDER */" => "LIDER",
 		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`NOMBRE`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`NOMBRE`), '') /* CELULAR */" => "CELULAR",
@@ -57,6 +61,7 @@
 	// Fields that can be quick searched
 	$x->QueryFieldsQS = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
+		"if(`lideresgestion`.`HORA`,date_format(`lideresgestion`.`HORA`,'%m/%d/%Y %h:%i %p'),'')" => "HORA",
 		"IF(    CHAR_LENGTH(`gestion1`.`CODGESTION`) || CHAR_LENGTH(`gestion1`.`DESGESTION`), CONCAT_WS('',   `gestion1`.`CODGESTION`, ' - ', `gestion1`.`DESGESTION`), '') /* CODGESTION */" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* LIDER */" => "CEDULA",
 		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`NOMBRE`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`NOMBRE`), '') /* CELULAR */" => "CELULAR",
@@ -94,10 +99,10 @@
 	$x->TableIcon = 'table.gif';
 	$x->PrimaryKey = '`lideresgestion`.`LLAVE`';
 
-	$x->ColWidth = [150, 150, 150, 150, 150, ];
-	$x->ColCaption = ['LLAVE', 'CODGESTION', 'LIDER', 'CELULAR', 'ESTADO', ];
-	$x->ColFieldName = ['LLAVE', 'CODGESTION', 'CEDULA', 'CELULAR', 'ESTADO', ];
-	$x->ColNumber  = [1, 2, 3, 4, 6, ];
+	$x->ColWidth = [150, 150, 150, 150, 150, 150, ];
+	$x->ColCaption = ['LLAVE', 'HORA', 'CODGESTION', 'LIDER', 'CELULAR', 'ESTADO', ];
+	$x->ColFieldName = ['LLAVE', 'HORA', 'CODGESTION', 'CEDULA', 'CELULAR', 'ESTADO', ];
+	$x->ColNumber  = [1, 2, 3, 4, 5, 7, ];
 
 	// template paths below are based on the app main directory
 	$x->Template = 'templates/lideresgestion_templateTV.html';
