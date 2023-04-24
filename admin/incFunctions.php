@@ -997,7 +997,7 @@
 						],
 					],
 					'CODGESTION' => [
-						'appgini' => "VARCHAR(20) NULL",
+						'appgini' => "VARCHAR(4) NULL",
 						'info' => [
 							'caption' => 'CODGESTION',
 							'description' => '',
