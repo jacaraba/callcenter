@@ -30,9 +30,9 @@
 				<!-- Field: CEDULA -->
 				<div class="form-group lideresgestion-CEDULA">
 					<hr class="hidden-md hidden-lg">
-					<label class="control-label col-lg-3" for="CEDULA">CEDULA</label>
+					<label class="control-label col-lg-3" for="CEDULA" data-parent_link="view_parent_modal">CEDULA</label>
 					<div class="col-lg-9">
-						<input maxlength="10" type="text" class="form-control" name="CEDULA" id="CEDULA" value="<%%VALUE(CEDULA)%%>">
+						<div class="lookup-flex"><%%COMBO(CEDULA)%%><%%PLINK(CEDULA)%%><%%ADDNEW(lideres)%%></div>
 					</div>
 				</div>
 

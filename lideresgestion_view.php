@@ -20,7 +20,7 @@
 	$x->QueryFieldsTV = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
-		"`lideresgestion`.`CEDULA`" => "CEDULA",
+		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
 		"`lideresgestion`.`CELULAR`" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
@@ -39,7 +39,7 @@
 	$x->QueryFieldsCSV = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
-		"`lideresgestion`.`CEDULA`" => "CEDULA",
+		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
 		"`lideresgestion`.`CELULAR`" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
@@ -48,7 +48,7 @@
 	$x->QueryFieldsFilters = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
-		"`lideresgestion`.`CEDULA`" => "CEDULA",
+		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
 		"`lideresgestion`.`CELULAR`" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
@@ -58,16 +58,16 @@
 	$x->QueryFieldsQS = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
-		"`lideresgestion`.`CEDULA`" => "CEDULA",
+		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
 		"`lideresgestion`.`CELULAR`" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
 	];
 
 	// Lookup fields that can be used as filterers
-	$x->filterers = [];
+	$x->filterers = ['CEDULA' => 'CEDULA', ];
 
-	$x->QueryFrom = "`lideresgestion` ";
+	$x->QueryFrom = "`lideresgestion` LEFT JOIN `lideres` as lideres1 ON `lideres1`.`CEDULA`=`lideresgestion`.`CEDULA` ";
 	$x->QueryWhere = '';
 	$x->QueryOrder = '';
 
