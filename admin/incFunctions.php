@@ -974,14 +974,14 @@
 			$schema = [
 				'gestion' => [
 					'CODGESTION' => [
-						'appgini' => "VARCHAR(20) NOT NULL PRIMARY KEY",
+						'appgini' => "VARCHAR(4) NOT NULL PRIMARY KEY",
 						'info' => [
 							'caption' => 'CODGESTION',
 							'description' => '',
 						],
 					],
 					'DESGESTION' => [
-						'appgini' => "VARCHAR(100) NULL",
+						'appgini' => "VARCHAR(40) NULL",
 						'info' => [
 							'caption' => 'DESGESTION',
 							'description' => '',
@@ -1006,7 +1006,7 @@
 					'CEDULA' => [
 						'appgini' => "VARCHAR(10) NULL",
 						'info' => [
-							'caption' => 'CEDULA',
+							'caption' => 'LIDER',
 							'description' => '',
 						],
 					],

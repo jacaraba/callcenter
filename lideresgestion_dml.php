@@ -534,7 +534,7 @@ function lideresgestion_form($selected_id = '', $AllowUpdate = 1, $AllowInsert =
 	$templateCode = str_replace('<%%COMBOTEXT(ESTADO)%%>', $combo_ESTADO->SelectedData, $templateCode);
 
 	/* lookup fields array: 'lookup field name' => ['parent table name', 'lookup field caption'] */
-	$lookup_fields = ['CEDULA' => ['lideres', 'CEDULA'], 'CELULAR' => ['lideres', 'CELULAR'], ];
+	$lookup_fields = ['CEDULA' => ['lideres', 'LIDER'], 'CELULAR' => ['lideres', 'CELULAR'], ];
 	foreach($lookup_fields as $luf => $ptfc) {
 		$pt_perm = getTablePermissions($ptfc[0]);
 

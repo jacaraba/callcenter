@@ -20,7 +20,7 @@
 	$x->QueryFieldsTV = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
-		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
+		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* LIDER */" => "CEDULA",
 		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`NOMBRE`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`NOMBRE`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
@@ -39,7 +39,7 @@
 	$x->QueryFieldsCSV = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
-		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
+		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* LIDER */" => "CEDULA",
 		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`NOMBRE`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`NOMBRE`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
@@ -48,7 +48,7 @@
 	$x->QueryFieldsFilters = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
-		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
+		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* LIDER */" => "LIDER",
 		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`NOMBRE`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`NOMBRE`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
@@ -58,14 +58,14 @@
 	$x->QueryFieldsQS = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
-		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
+		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* LIDER */" => "CEDULA",
 		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`NOMBRE`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`NOMBRE`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
 	];
 
 	// Lookup fields that can be used as filterers
-	$x->filterers = ['CEDULA' => 'CEDULA', 'CELULAR' => 'CELULAR', ];
+	$x->filterers = ['CEDULA' => 'LIDER', 'CELULAR' => 'CELULAR', ];
 
 	$x->QueryFrom = "`lideresgestion` LEFT JOIN `lideres` as lideres1 ON `lideres1`.`CEDULA`=`lideresgestion`.`CEDULA` LEFT JOIN `lideres` as lideres2 ON `lideres2`.`CEDULA`=`lideresgestion`.`CELULAR` ";
 	$x->QueryWhere = '';
@@ -95,7 +95,7 @@
 	$x->PrimaryKey = '`lideresgestion`.`LLAVE`';
 
 	$x->ColWidth = [150, 150, 150, 150, 150, ];
-	$x->ColCaption = ['LLAVE', 'CODGESTION', 'CEDULA', 'CELULAR', 'ESTADO', ];
+	$x->ColCaption = ['LLAVE', 'CODGESTION', 'LIDER', 'CELULAR', 'ESTADO', ];
 	$x->ColFieldName = ['LLAVE', 'CODGESTION', 'CEDULA', 'CELULAR', 'ESTADO', ];
 	$x->ColNumber  = [1, 2, 3, 4, 6, ];
 
