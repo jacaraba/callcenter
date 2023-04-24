@@ -21,7 +21,7 @@
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
-		"`lideresgestion`.`CELULAR`" => "CELULAR",
+		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`DIRECCION`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`DIRECCION`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
 	];
@@ -40,7 +40,7 @@
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
-		"`lideresgestion`.`CELULAR`" => "CELULAR",
+		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`DIRECCION`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`DIRECCION`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
 	];
@@ -49,7 +49,7 @@
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
-		"`lideresgestion`.`CELULAR`" => "CELULAR",
+		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`DIRECCION`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`DIRECCION`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
 	];
@@ -59,15 +59,15 @@
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
-		"`lideresgestion`.`CELULAR`" => "CELULAR",
+		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`DIRECCION`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`DIRECCION`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
 	];
 
 	// Lookup fields that can be used as filterers
-	$x->filterers = ['CEDULA' => 'CEDULA', ];
+	$x->filterers = ['CEDULA' => 'CEDULA', 'CELULAR' => 'CELULAR', ];
 
-	$x->QueryFrom = "`lideresgestion` LEFT JOIN `lideres` as lideres1 ON `lideres1`.`CEDULA`=`lideresgestion`.`CEDULA` ";
+	$x->QueryFrom = "`lideresgestion` LEFT JOIN `lideres` as lideres1 ON `lideres1`.`CEDULA`=`lideresgestion`.`CEDULA` LEFT JOIN `lideres` as lideres2 ON `lideres2`.`CEDULA`=`lideresgestion`.`CELULAR` ";
 	$x->QueryWhere = '';
 	$x->QueryOrder = '';
 
