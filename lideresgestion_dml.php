@@ -13,7 +13,7 @@ function lideresgestion_insert(&$error_message = '') {
 	if(!$arrPerm['insert']) return false;
 
 	$data = [
-		'CODGESTION' => Request::lookup('CODGESTION', ''),
+		'CODGESTION' => Request::val('CODGESTION', ''),
 		'CEDULA' => Request::lookup('CEDULA', ''),
 		'CELULAR' => Request::val('CELULAR', ''),
 		'OBSERVACIONES' => br2nl(Request::val('OBSERVACIONES', '')),
@@ -112,7 +112,7 @@ function lideresgestion_update(&$selected_id, &$error_message = '') {
 	if(!check_record_permission('lideresgestion', $selected_id, 'edit')) return false;
 
 	$data = [
-		'CODGESTION' => Request::lookup('CODGESTION', ''),
+		'CODGESTION' => Request::val('CODGESTION', ''),
 		'CEDULA' => Request::lookup('CEDULA', ''),
 		'CELULAR' => Request::val('CELULAR', ''),
 		'OBSERVACIONES' => br2nl(Request::val('OBSERVACIONES', '')),
@@ -197,15 +197,12 @@ function lideresgestion_form($selected_id = '', $AllowUpdate = 1, $AllowInsert =
 		$dvprint = true;
 	}
 
-	$filterer_CODGESTION = Request::val('filterer_CODGESTION');
 	$filterer_CEDULA = Request::val('filterer_CEDULA');
 
 	// populate filterers, starting from children to grand-parents
 
 	// unique random identifier
 	$rnd1 = ($dvprint ? rand(1000000, 9999999) : '');
-	// combobox: CODGESTION
-	$combo_CODGESTION = new DataCombo;
 	// combobox: CEDULA
 	$combo_CEDULA = new DataCombo;
 	// combobox: ESTADO
@@ -238,7 +235,6 @@ function lideresgestion_form($selected_id = '', $AllowUpdate = 1, $AllowInsert =
 		if(!($row = db_fetch_array($res))) {
 			return error_message($Translation['No records found'], 'lideresgestion_view.php', false);
 		}
-		$combo_CODGESTION->SelectedData = $row['CODGESTION'];
 		$combo_CEDULA->SelectedData = $row['CEDULA'];
 		$combo_ESTADO->SelectedData = $row['ESTADO'];
 		$urow = $row; /* unsanitized data */
@@ -247,12 +243,9 @@ function lideresgestion_form($selected_id = '', $AllowUpdate = 1, $AllowInsert =
 		$filterField = Request::val('FilterField');
 		$filterOperator = Request::val('FilterOperator');
 		$filterValue = Request::val('FilterValue');
-		$combo_CODGESTION->SelectedData = $filterer_CODGESTION;
 		$combo_CEDULA->SelectedData = $filterer_CEDULA;
 		$combo_ESTADO->SelectedText = (isset($filterField[1]) && $filterField[1] == '6' && $filterOperator[1] == '<=>' ? $filterValue[1] : 'INGRESADO');
 	}
-	$combo_CODGESTION->HTML = '<span id="CODGESTION-container' . $rnd1 . '"></span><input type="hidden" name="CODGESTION" id="CODGESTION' . $rnd1 . '" value="' . html_attr($combo_CODGESTION->SelectedData) . '">';
-	$combo_CODGESTION->MatchText = '<span id="CODGESTION-container-readonly' . $rnd1 . '"></span><input type="hidden" name="CODGESTION" id="CODGESTION' . $rnd1 . '" value="' . html_attr($combo_CODGESTION->SelectedData) . '">';
 	$combo_CEDULA->HTML = '<span id="CEDULA-container' . $rnd1 . '"></span><input type="hidden" name="CEDULA" id="CEDULA' . $rnd1 . '" value="' . html_attr($combo_CEDULA->SelectedData) . '">';
 	$combo_CEDULA->MatchText = '<span id="CEDULA-container-readonly' . $rnd1 . '"></span><input type="hidden" name="CEDULA" id="CEDULA' . $rnd1 . '" value="' . html_attr($combo_CEDULA->SelectedData) . '">';
 	$combo_ESTADO->Render();
@@ -262,92 +255,13 @@ function lideresgestion_form($selected_id = '', $AllowUpdate = 1, $AllowInsert =
 
 	<script>
 		// initial lookup values
-		AppGini.current_CODGESTION__RAND__ = { text: "", value: "<?php echo addslashes($selected_id ? $urow['CODGESTION'] : htmlspecialchars($filterer_CODGESTION, ENT_QUOTES)); ?>"};
 		AppGini.current_CEDULA__RAND__ = { text: "", value: "<?php echo addslashes($selected_id ? $urow['CEDULA'] : htmlspecialchars($filterer_CEDULA, ENT_QUOTES)); ?>"};
 
 		jQuery(function() {
 			setTimeout(function() {
-				if(typeof(CODGESTION_reload__RAND__) == 'function') CODGESTION_reload__RAND__();
 				if(typeof(CEDULA_reload__RAND__) == 'function') CEDULA_reload__RAND__();
 			}, 50); /* we need to slightly delay client-side execution of the above code to allow AppGini.ajaxCache to work */
 		});
-		function CODGESTION_reload__RAND__() {
-		<?php if(($AllowUpdate || $AllowInsert) && !$dvprint) { ?>
-
-			$j("#CODGESTION-container__RAND__").select2({
-				/* initial default value */
-				initSelection: function(e, c) {
-					$j.ajax({
-						url: 'ajax_combo.php',
-						dataType: 'json',
-						data: { id: AppGini.current_CODGESTION__RAND__.value, t: 'lideresgestion', f: 'CODGESTION' },
-						success: function(resp) {
-							c({
-								id: resp.results[0].id,
-								text: resp.results[0].text
-							});
-							$j('[name="CODGESTION"]').val(resp.results[0].id);
-							$j('[id=CODGESTION-container-readonly__RAND__]').html('<span class="match-text" id="CODGESTION-match-text">' + resp.results[0].text + '</span>');
-							if(resp.results[0].id == '<?php echo empty_lookup_value; ?>') { $j('.btn[id=gestion_view_parent]').hide(); } else { $j('.btn[id=gestion_view_parent]').show(); }
-
-
-							if(typeof(CODGESTION_update_autofills__RAND__) == 'function') CODGESTION_update_autofills__RAND__();
-						}
-					});
-				},
-				width: '100%',
-				formatNoMatches: function(term) { return '<?php echo addslashes($Translation['No matches found!']); ?>'; },
-				minimumResultsForSearch: 5,
-				loadMorePadding: 200,
-				ajax: {
-					url: 'ajax_combo.php',
-					dataType: 'json',
-					cache: true,
-					data: function(term, page) { return { s: term, p: page, t: 'lideresgestion', f: 'CODGESTION' }; },
-					results: function(resp, page) { return resp; }
-				},
-				escapeMarkup: function(str) { return str; }
-			}).on('change', function(e) {
-				AppGini.current_CODGESTION__RAND__.value = e.added.id;
-				AppGini.current_CODGESTION__RAND__.text = e.added.text;
-				$j('[name="CODGESTION"]').val(e.added.id);
-				if(e.added.id == '<?php echo empty_lookup_value; ?>') { $j('.btn[id=gestion_view_parent]').hide(); } else { $j('.btn[id=gestion_view_parent]').show(); }
-
-
-				if(typeof(CODGESTION_update_autofills__RAND__) == 'function') CODGESTION_update_autofills__RAND__();
-			});
-
-			if(!$j("#CODGESTION-container__RAND__").length) {
-				$j.ajax({
-					url: 'ajax_combo.php',
-					dataType: 'json',
-					data: { id: AppGini.current_CODGESTION__RAND__.value, t: 'lideresgestion', f: 'CODGESTION' },
-					success: function(resp) {
-						$j('[name="CODGESTION"]').val(resp.results[0].id);
-						$j('[id=CODGESTION-container-readonly__RAND__]').html('<span class="match-text" id="CODGESTION-match-text">' + resp.results[0].text + '</span>');
-						if(resp.results[0].id == '<?php echo empty_lookup_value; ?>') { $j('.btn[id=gestion_view_parent]').hide(); } else { $j('.btn[id=gestion_view_parent]').show(); }
-
-						if(typeof(CODGESTION_update_autofills__RAND__) == 'function') CODGESTION_update_autofills__RAND__();
-					}
-				});
-			}
-
-		<?php } else { ?>
-
-			$j.ajax({
-				url: 'ajax_combo.php',
-				dataType: 'json',
-				data: { id: AppGini.current_CODGESTION__RAND__.value, t: 'lideresgestion', f: 'CODGESTION' },
-				success: function(resp) {
-					$j('[id=CODGESTION-container__RAND__], [id=CODGESTION-container-readonly__RAND__]').html('<span class="match-text" id="CODGESTION-match-text">' + resp.results[0].text + '</span>');
-					if(resp.results[0].id == '<?php echo empty_lookup_value; ?>') { $j('.btn[id=gestion_view_parent]').hide(); } else { $j('.btn[id=gestion_view_parent]').show(); }
-
-					if(typeof(CODGESTION_update_autofills__RAND__) == 'function') CODGESTION_update_autofills__RAND__();
-				}
-			});
-		<?php } ?>
-
-		}
 		function CEDULA_reload__RAND__() {
 		<?php if(($AllowUpdate || $AllowInsert) && !$dvprint) { ?>
 
@@ -509,8 +423,7 @@ function lideresgestion_form($selected_id = '', $AllowUpdate = 1, $AllowInsert =
 	// set records to read only if user can't insert new records and can't edit current record
 	if(($selected_id && !$AllowUpdate && !$AllowInsert) || (!$selected_id && !$AllowInsert)) {
 		$jsReadOnly = '';
-		$jsReadOnly .= "\tjQuery('#CODGESTION').prop('disabled', true).css({ color: '#555', backgroundColor: '#fff' });\n";
-		$jsReadOnly .= "\tjQuery('#CODGESTION_caption').prop('disabled', true).css({ color: '#555', backgroundColor: 'white' });\n";
+		$jsReadOnly .= "\tjQuery('#CODGESTION').replaceWith('<div class=\"form-control-static\" id=\"CODGESTION\">' + (jQuery('#CODGESTION').val() || '') + '</div>');\n";
 		$jsReadOnly .= "\tjQuery('#CEDULA').prop('disabled', true).css({ color: '#555', backgroundColor: '#fff' });\n";
 		$jsReadOnly .= "\tjQuery('#CEDULA_caption').prop('disabled', true).css({ color: '#555', backgroundColor: 'white' });\n";
 		$jsReadOnly .= "\tjQuery('#CELULAR').replaceWith('<div class=\"form-control-static\" id=\"CELULAR\">' + (jQuery('#CELULAR').val() || '') + '</div>');\n";
@@ -524,9 +437,6 @@ function lideresgestion_form($selected_id = '', $AllowUpdate = 1, $AllowInsert =
 	}
 
 	// process combos
-	$templateCode = str_replace('<%%COMBO(CODGESTION)%%>', $combo_CODGESTION->HTML, $templateCode);
-	$templateCode = str_replace('<%%COMBOTEXT(CODGESTION)%%>', $combo_CODGESTION->MatchText, $templateCode);
-	$templateCode = str_replace('<%%URLCOMBOTEXT(CODGESTION)%%>', urlencode($combo_CODGESTION->MatchText), $templateCode);
 	$templateCode = str_replace('<%%COMBO(CEDULA)%%>', $combo_CEDULA->HTML, $templateCode);
 	$templateCode = str_replace('<%%COMBOTEXT(CEDULA)%%>', $combo_CEDULA->MatchText, $templateCode);
 	$templateCode = str_replace('<%%URLCOMBOTEXT(CEDULA)%%>', urlencode($combo_CEDULA->MatchText), $templateCode);
@@ -534,7 +444,7 @@ function lideresgestion_form($selected_id = '', $AllowUpdate = 1, $AllowInsert =
 	$templateCode = str_replace('<%%COMBOTEXT(ESTADO)%%>', $combo_ESTADO->SelectedData, $templateCode);
 
 	/* lookup fields array: 'lookup field name' => ['parent table name', 'lookup field caption'] */
-	$lookup_fields = ['CODGESTION' => ['gestion', 'CODGESTION'], 'CEDULA' => ['lideres', 'CEDULA'], ];
+	$lookup_fields = ['CEDULA' => ['lideres', 'CEDULA'], ];
 	foreach($lookup_fields as $luf => $ptfc) {
 		$pt_perm = getTablePermissions($ptfc[0]);
 

@@ -12,7 +12,6 @@
 			<div class="clearfix"></div>
 		</div>
 	</div>
-	<hr class="hidden-xs hidden-sm">
 
 	<div class="row">
 		<!-- form inputs -->
@@ -22,9 +21,9 @@
 				<!-- Field: CODGESTION -->
 				<div class="form-group lideresgestion-CODGESTION">
 					<hr class="hidden-md hidden-lg">
-					<label class="control-label col-lg-3" for="CODGESTION" data-parent_link="view_parent_modal">CODGESTION</label>
+					<label class="control-label col-lg-3" for="CODGESTION">CODGESTION</label>
 					<div class="col-lg-9">
-						<div class="lookup-flex"><%%COMBO(CODGESTION)%%><%%PLINK(CODGESTION)%%><%%ADDNEW(gestion)%%></div>
+						<input maxlength="20" type="text" class="form-control" name="CODGESTION" id="CODGESTION" value="<%%VALUE(CODGESTION)%%>">
 					</div>
 				</div>
 
@@ -96,27 +95,9 @@
 			/* enable DV action buttons to float on scrolling down the form */
 			enable_dvab_floating();
 
-			if(!$j('.table_view').length || $j('[name=SelectedID]').val().length) {
-				AppGini.once({
-					condition: function() {
-						return $j('.form-group.lideresgestion-CODGESTION')
-									.find('.nicEdit-main, .select2-container, input[type=radio]')
-									.length > 0
-								// or read-only DV
-								|| (!$j('#update').length && !$j('#insert').length);
-					},
-					action: function() {
-						$j('#lideresgestion_dv_container-loading').addClass('hidden');
-						$j('#lideresgestion_dv_container').removeClass('hidden');
-						AppGini.focusFormElement('lideresgestion', 'CODGESTION');
-					},
-					timeout:  5000,
-					doActionOnTimeout:  true
-				});
-			} else {
-				$j('#lideresgestion_dv_container-loading').addClass('hidden');
-				$j('#lideresgestion_dv_container').removeClass('hidden');
-			}
+			$j('#lideresgestion_dv_container-loading').addClass('hidden');
+			$j('#lideresgestion_dv_container').removeClass('hidden');
+			if(!$j('.table_view').length || $j('[name=SelectedID]').val().length) AppGini.focusFormElement('lideresgestion', 'CODGESTION');
 
 			$j('form').eq(0).change(function() {
 				if($j(this).data('already_changed')) return;

@@ -19,7 +19,7 @@
 	// Fields that can be displayed in the table view
 	$x->QueryFieldsTV = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
-		"IF(    CHAR_LENGTH(`gestion1`.`CODGESTION`) || CHAR_LENGTH(`gestion1`.`DESGESTION`), CONCAT_WS('',   `gestion1`.`CODGESTION`, ' - ', `gestion1`.`DESGESTION`), '') /* CODGESTION */" => "CODGESTION",
+		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
 		"`lideresgestion`.`CELULAR`" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
@@ -38,7 +38,7 @@
 	// Fields that can be displayed in the csv file
 	$x->QueryFieldsCSV = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
-		"IF(    CHAR_LENGTH(`gestion1`.`CODGESTION`) || CHAR_LENGTH(`gestion1`.`DESGESTION`), CONCAT_WS('',   `gestion1`.`CODGESTION`, ' - ', `gestion1`.`DESGESTION`), '') /* CODGESTION */" => "CODGESTION",
+		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
 		"`lideresgestion`.`CELULAR`" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
@@ -47,7 +47,7 @@
 	// Fields that can be filtered
 	$x->QueryFieldsFilters = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
-		"IF(    CHAR_LENGTH(`gestion1`.`CODGESTION`) || CHAR_LENGTH(`gestion1`.`DESGESTION`), CONCAT_WS('',   `gestion1`.`CODGESTION`, ' - ', `gestion1`.`DESGESTION`), '') /* CODGESTION */" => "CODGESTION",
+		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
 		"`lideresgestion`.`CELULAR`" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
@@ -57,7 +57,7 @@
 	// Fields that can be quick searched
 	$x->QueryFieldsQS = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
-		"IF(    CHAR_LENGTH(`gestion1`.`CODGESTION`) || CHAR_LENGTH(`gestion1`.`DESGESTION`), CONCAT_WS('',   `gestion1`.`CODGESTION`, ' - ', `gestion1`.`DESGESTION`), '') /* CODGESTION */" => "CODGESTION",
+		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
 		"`lideresgestion`.`CELULAR`" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
@@ -65,9 +65,9 @@
 	];
 
 	// Lookup fields that can be used as filterers
-	$x->filterers = ['CODGESTION' => 'CODGESTION', 'CEDULA' => 'CEDULA', ];
+	$x->filterers = ['CEDULA' => 'CEDULA', ];
 
-	$x->QueryFrom = "`lideresgestion` LEFT JOIN `gestion` as gestion1 ON `gestion1`.`CODGESTION`=`lideresgestion`.`CODGESTION` LEFT JOIN `lideres` as lideres1 ON `lideres1`.`CEDULA`=`lideresgestion`.`CEDULA` ";
+	$x->QueryFrom = "`lideresgestion` LEFT JOIN `lideres` as lideres1 ON `lideres1`.`CEDULA`=`lideresgestion`.`CEDULA` ";
 	$x->QueryWhere = '';
 	$x->QueryOrder = '';
 
