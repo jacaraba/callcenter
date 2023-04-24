@@ -9,8 +9,6 @@
 			return $data;
 		},
 		'lideresgestion' => function($data, $options = []) {
-			if(isset($data['CODGESTION'])) $data['CODGESTION'] = pkGivenLookupText($data['CODGESTION'], 'lideresgestion', 'CODGESTION');
-			if(isset($data['CEDULA'])) $data['CEDULA'] = pkGivenLookupText($data['CEDULA'], 'lideresgestion', 'CEDULA');
 
 			return $data;
 		},
