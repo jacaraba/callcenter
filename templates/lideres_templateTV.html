@@ -1,0 +1,16 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the lideres_init() hook (in hooks/lideres.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="lideres-LIDER-<%%VALUE(CEDULA)%%>" class="lideres-LIDER"><%%SELECT%%><%%VALUE(LIDER)%%><%%ENDSELECT%%></td>
+		<td id="lideres-CEDULA-<%%VALUE(CEDULA)%%>" class="lideres-CEDULA"><%%SELECT%%><%%VALUE(CEDULA)%%><%%ENDSELECT%%></td>
+		<td id="lideres-NOMBRE-<%%VALUE(CEDULA)%%>" class="lideres-NOMBRE"><%%SELECT%%><%%VALUE(NOMBRE)%%><%%ENDSELECT%%></td>
+		<td id="lideres-PUESTO-<%%VALUE(CEDULA)%%>" class="lideres-PUESTO"><%%SELECT%%><%%VALUE(PUESTO)%%><%%ENDSELECT%%></td>
+		<td id="lideres-CELULAR-<%%VALUE(CEDULA)%%>" class="lideres-CELULAR text-right"><%%SELECT%%><%%VALUE(CELULAR)%%><%%ENDSELECT%%></td>
+		<td id="lideres-DIRECCION-<%%VALUE(CEDULA)%%>" class="lideres-DIRECCION"><%%SELECT%%><%%VALUE(DIRECCION)%%><%%ENDSELECT%%></td>
+		<td id="lideres-CORREO-<%%VALUE(CEDULA)%%>" class="lideres-CORREO"><%%SELECT%%><%%VALUE(CORREO)%%><%%ENDSELECT%%></td>
+		<td id="lideres-OBSERVACIONES-<%%VALUE(CEDULA)%%>" class="lideres-OBSERVACIONES"><%%SELECT%%><%%VALUE(OBSERVACIONES)%%><%%ENDSELECT%%></td>
+		<td id="lideres-ESTADO-<%%VALUE(CEDULA)%%>" class="lideres-ESTADO"><%%SELECT%%><%%VALUE(ESTADO)%%><%%ENDSELECT%%></td>

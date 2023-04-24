@@ -1,0 +1,16 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the lideres_init() hook (in hooks/lideres.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="lideres-LIDER-<%%VALUE(CEDULA)%%>" class="lideres-LIDER"><%%VALUE(LIDER)%%></td>
+		<td id="lideres-CEDULA-<%%VALUE(CEDULA)%%>" class="lideres-CEDULA"><%%VALUE(CEDULA)%%></td>
+		<td id="lideres-NOMBRE-<%%VALUE(CEDULA)%%>" class="lideres-NOMBRE"><%%VALUE(NOMBRE)%%></td>
+		<td id="lideres-PUESTO-<%%VALUE(CEDULA)%%>" class="lideres-PUESTO"><%%VALUE(PUESTO)%%></td>
+		<td id="lideres-CELULAR-<%%VALUE(CEDULA)%%>" class="lideres-CELULAR text-right"><%%VALUE(CELULAR)%%></td>
+		<td id="lideres-DIRECCION-<%%VALUE(CEDULA)%%>" class="lideres-DIRECCION"><%%VALUE(DIRECCION)%%></td>
+		<td id="lideres-CORREO-<%%VALUE(CEDULA)%%>" class="lideres-CORREO"><%%VALUE(CORREO)%%></td>
+		<td id="lideres-OBSERVACIONES-<%%VALUE(CEDULA)%%>" class="lideres-OBSERVACIONES"><%%VALUE(OBSERVACIONES)%%></td>
+		<td id="lideres-ESTADO-<%%VALUE(CEDULA)%%>" class="lideres-ESTADO"><%%VALUE(ESTADO)%%></td>
