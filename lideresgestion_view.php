@@ -19,7 +19,7 @@
 	// Fields that can be displayed in the table view
 	$x->QueryFieldsTV = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
-		"IF(    CHAR_LENGTH(`gestion1`.`CODGESTION`), CONCAT_WS('',   `gestion1`.`CODGESTION`), '') /* CODGESTION */" => "CODGESTION",
+		"IF(    CHAR_LENGTH(`gestion1`.`CODGESTION`) || CHAR_LENGTH(`gestion1`.`DESGESTION`), CONCAT_WS('',   `gestion1`.`CODGESTION`, ' - ', `gestion1`.`DESGESTION`), '') /* CODGESTION */" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* LIDER */" => "CEDULA",
 		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`NOMBRE`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`NOMBRE`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
@@ -28,7 +28,7 @@
 	// mapping incoming sort by requests to actual query fields
 	$x->SortFields = [
 		1 => '`lideresgestion`.`LLAVE`',
-		2 => '`gestion1`.`CODGESTION`',
+		2 => 2,
 		3 => 3,
 		4 => 4,
 		5 => 5,
@@ -38,7 +38,7 @@
 	// Fields that can be displayed in the csv file
 	$x->QueryFieldsCSV = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
-		"IF(    CHAR_LENGTH(`gestion1`.`CODGESTION`), CONCAT_WS('',   `gestion1`.`CODGESTION`), '') /* CODGESTION */" => "CODGESTION",
+		"IF(    CHAR_LENGTH(`gestion1`.`CODGESTION`) || CHAR_LENGTH(`gestion1`.`DESGESTION`), CONCAT_WS('',   `gestion1`.`CODGESTION`, ' - ', `gestion1`.`DESGESTION`), '') /* CODGESTION */" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* LIDER */" => "CEDULA",
 		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`NOMBRE`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`NOMBRE`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
@@ -47,7 +47,7 @@
 	// Fields that can be filtered
 	$x->QueryFieldsFilters = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
-		"IF(    CHAR_LENGTH(`gestion1`.`CODGESTION`), CONCAT_WS('',   `gestion1`.`CODGESTION`), '') /* CODGESTION */" => "CODGESTION",
+		"IF(    CHAR_LENGTH(`gestion1`.`CODGESTION`) || CHAR_LENGTH(`gestion1`.`DESGESTION`), CONCAT_WS('',   `gestion1`.`CODGESTION`, ' - ', `gestion1`.`DESGESTION`), '') /* CODGESTION */" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* LIDER */" => "LIDER",
 		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`NOMBRE`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`NOMBRE`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
@@ -57,7 +57,7 @@
 	// Fields that can be quick searched
 	$x->QueryFieldsQS = [
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
-		"IF(    CHAR_LENGTH(`gestion1`.`CODGESTION`), CONCAT_WS('',   `gestion1`.`CODGESTION`), '') /* CODGESTION */" => "CODGESTION",
+		"IF(    CHAR_LENGTH(`gestion1`.`CODGESTION`) || CHAR_LENGTH(`gestion1`.`DESGESTION`), CONCAT_WS('',   `gestion1`.`CODGESTION`, ' - ', `gestion1`.`DESGESTION`), '') /* CODGESTION */" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* LIDER */" => "CEDULA",
 		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`NOMBRE`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`NOMBRE`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",

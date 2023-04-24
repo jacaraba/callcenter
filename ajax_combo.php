@@ -38,7 +38,7 @@
 			'CODGESTION' => [
 				'parent_table' => 'gestion',
 				'parent_pk_field' => 'CODGESTION',
-				'parent_caption' => '`gestion`.`CODGESTION`',
+				'parent_caption' => 'IF(CHAR_LENGTH(`gestion`.`CODGESTION`) || CHAR_LENGTH(`gestion`.`DESGESTION`), CONCAT_WS(\'\', `gestion`.`CODGESTION`, \' - \', `gestion`.`DESGESTION`), \'\')',
 				'parent_from' => '`gestion` ',
 				'filterers' => [],
 				'custom_query' => '',

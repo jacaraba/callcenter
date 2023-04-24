@@ -28,9 +28,7 @@
 				`CELULAR` VARCHAR(10) NULL,
 				`OBSERVACIONES` VARCHAR(100) NULL,
 				`ESTADO` VARCHAR(10) NULL DEFAULT 'INGRESADO'
-			) CHARSET utf8mb4", [
-				" ALTER TABLE `lideresgestion` CHANGE `CODGESTION` `CODGESTION` VARCHAR(4) NOT NULL ",
-			]
+			) CHARSET utf8mb4"
 		);
 		setupIndexes('lideresgestion', ['CODGESTION','CEDULA','CELULAR',]);
 
