@@ -21,7 +21,7 @@
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
-		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`DIRECCION`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`DIRECCION`), '') /* CELULAR */" => "CELULAR",
+		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`NOMBRE`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`NOMBRE`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
 	];
@@ -40,7 +40,7 @@
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
-		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`DIRECCION`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`DIRECCION`), '') /* CELULAR */" => "CELULAR",
+		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`NOMBRE`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`NOMBRE`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
 	];
@@ -49,7 +49,7 @@
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
-		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`DIRECCION`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`DIRECCION`), '') /* CELULAR */" => "CELULAR",
+		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`NOMBRE`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`NOMBRE`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
 	];
@@ -59,7 +59,7 @@
 		"`lideresgestion`.`LLAVE`" => "LLAVE",
 		"`lideresgestion`.`CODGESTION`" => "CODGESTION",
 		"IF(    CHAR_LENGTH(`lideres1`.`CEDULA`) || CHAR_LENGTH(`lideres1`.`NOMBRE`), CONCAT_WS('',   `lideres1`.`CEDULA`, ' - ', `lideres1`.`NOMBRE`), '') /* CEDULA */" => "CEDULA",
-		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`DIRECCION`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`DIRECCION`), '') /* CELULAR */" => "CELULAR",
+		"IF(    CHAR_LENGTH(`lideres2`.`CELULAR`) || CHAR_LENGTH(`lideres2`.`NOMBRE`), CONCAT_WS('',   `lideres2`.`CELULAR`, ' - ', `lideres2`.`NOMBRE`), '') /* CELULAR */" => "CELULAR",
 		"`lideresgestion`.`OBSERVACIONES`" => "OBSERVACIONES",
 		"`lideresgestion`.`ESTADO`" => "ESTADO",
 	];
