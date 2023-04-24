@@ -30,7 +30,7 @@
 				`ESTADO` VARCHAR(10) NULL DEFAULT 'INGRESADO'
 			) CHARSET utf8mb4"
 		);
-		setupIndexes('lideresgestion', ['CODGESTION','CEDULA','CELULAR',]);
+		setupIndexes('lideresgestion', ['CODGESTION','CEDULA',]);
 
 		setupTable(
 			'lideres', " 

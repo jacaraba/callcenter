@@ -11,7 +11,6 @@
 		'lideresgestion' => function($data, $options = []) {
 			if(isset($data['CODGESTION'])) $data['CODGESTION'] = pkGivenLookupText($data['CODGESTION'], 'lideresgestion', 'CODGESTION');
 			if(isset($data['CEDULA'])) $data['CEDULA'] = pkGivenLookupText($data['CEDULA'], 'lideresgestion', 'CEDULA');
-			if(isset($data['CELULAR'])) $data['CELULAR'] = pkGivenLookupText($data['CELULAR'], 'lideresgestion', 'CELULAR');
 
 			return $data;
 		},
